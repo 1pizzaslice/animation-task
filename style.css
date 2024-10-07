@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(58, 68, 77);
+    cursor: none !important; 
+}
+
+
+
+#hero {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 2em;
+    color:  rgb(175, 72, 189);
+    height: 100vh;
+}
+
+#minicircle {
+    width: 20px;
+    height: 20px;
+    background-color: rgb(175, 72, 189);
+    border-radius: 50%;
+    position: absolute;
+    pointer-events: none;
+}
