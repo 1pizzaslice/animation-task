@@ -1,0 +1,20 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; /* box-sizing includes margin and padding therefore removes scrollbars */
+}
+
+canvas {
+    background: black;
+    position:absolute;
+    top: 0;
+    left: 0;
+}
+
+input {
+    position: absolute;
+    width: calc(100% - 20px); /* lets us perform calc when specifying css properties */
+    padding: 10px;
+    margin: 10px;
+    z-index: 100;
+}
