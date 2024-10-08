@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(56,220, 250);
+    overflow: hidden;
+}
+
+canvas {
+    z-index: 100000;
+}
+
+.instruction {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 30px;
+    color:  rgb(255, 94, 0);
+}
