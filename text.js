@@ -3,7 +3,7 @@ window.addEventListener('load', function() {
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    console.log(ctx);    // for future reference to see ctx properties
+    // console.log(ctx);    // for future reference to see ctx properties
 
     class Particle {
         constructor(effect , x, y, color){
@@ -29,8 +29,19 @@ window.addEventListener('load', function() {
             this.effect.context.fillRect(this.x, this.y, this.size, this.size);
         }
         update(){
-            this.x += (this.originX - this.x) * this.ease;
-            this.y += (this.originY - this.y) * this.ease;
+            this.dx = this.effect.mouse.x - this.x;
+            this.dy = this.effect.mouse.y - this.y;
+            this.distance = this.dx * this.dx + this.dy * this.dy;
+            this.force = -this.effect.mouse.radius / this.distance;
+
+            if(this.distance < this.effect.mouse.radius){
+                this.angle = Math.atan2(this.dy, this.dx);
+                this.vx += this.force * Math.cos(this.angle);
+                this.vy += this.force * Math.sin(this.angle);
+            }
+
+            this.x += (this.vx *= this.friction) + (this.originX - this.x) * this.ease;
+            this.y += (this.vy *= this.friction) + (this.originY - this.y) * this.ease;
         }
     }
 
@@ -116,7 +127,6 @@ window.addEventListener('load', function() {
                     }
                 }
             }
-            console.log(this.particles);
         }
         render(){
             this.particles.forEach(particle => {
